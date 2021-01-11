@@ -1,4 +1,0 @@
-{ 
-  "mongoURI": "mongodb+srv://user123:user123@dev-portal.9b5tm.mongodb.net/pizza?retryWrites=true&w=majority",
-  "jwtSecret": "secretToken"
-}
