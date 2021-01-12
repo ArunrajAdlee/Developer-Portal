@@ -4,6 +4,10 @@ const PostSchema = new mongoose.Schema({
   user: {
     type: mongoose.Schema.Types.ObjectId,
   },
+  title: {
+    type: String,
+    required: true,
+  },
   body: {
     type: String,
     required: true,
@@ -28,7 +32,7 @@ const PostSchema = new mongoose.Schema({
       },
       text: {
         type: String,
-        required,
+        required: true,
       },
       name: {
         type: String,
