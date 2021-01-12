@@ -131,4 +131,74 @@ router.delete('/:post_id', auth, async (req, res) => {
   }
 });
 
+// @route   PUT api/posts/like/:post_id
+// @desc    Add like to a post
+// @access  Private
+
+router.put('/like/:post_id', auth, async (req, res) => {
+  try {
+    const post = await Post.findById(req.params.post_id);
+
+    if (!post) {
+      return res.status(404).json({ msg: 'Post not found' });
+    }
+
+    if (
+      post.likes.filter((like) => like.user.toString() === req.user.id).length >
+      0
+    ) {
+      return res.status(400).json({ msg: 'You have already liked this post' });
+    }
+
+    post.likes.unshift({ user: req.user.id });
+
+    await post.save();
+    res.json(post.likes);
+  } catch (error) {
+    if (error.kind == 'ObjectId') {
+      return res.status(404).json({ msg: 'Post not found' });
+    }
+    console.log(error);
+    res.status(500).send('Server Error');
+  }
+});
+
+// @route   PUT api/posts/unlike/:post_id
+// @desc    Unlike like to a post
+// @access  Private
+
+router.put('/unlike/:post_id', auth, async (req, res) => {
+  try {
+    const post = await Post.findById(req.params.post_id);
+
+    if (!post) {
+      return res.status(404).json({ msg: 'Post not found' });
+    }
+
+    if (
+      post.likes.filter((like) => like.user.toString() === req.user.id)
+        .length === 0
+    ) {
+      return res
+        .status(400)
+        .json({ msg: "You cannot unlike a post you don't like like ;)" });
+    }
+
+    const rmvIndex = post.likes
+      .map((like) => like.user.toString())
+      .indexOf(req.user.id);
+
+    post.likes.splice(rmvIndex, 1);
+
+    await post.save();
+    res.json(post.likes);
+  } catch (error) {
+    if (error.kind == 'ObjectId') {
+      return res.status(404).json({ msg: 'Post not found' });
+    }
+    console.log(error);
+    res.status(500).send('Server Error');
+  }
+});
+
 module.exports = router;
