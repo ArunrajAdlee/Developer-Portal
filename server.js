@@ -8,7 +8,7 @@ const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Started on port ${PORT}`));
 app.use(express.json({ extended: false }));
 //Routes
-app.get('/', (req, res) => res.send("SUCCESS - API"));
+app.get('/', (req, res) => res.send('SUCCESS - API'));
 
 app.use('/api/users', require('./routes/api/users'));
 app.use('/api/auth', require('./routes/api/auth'));
