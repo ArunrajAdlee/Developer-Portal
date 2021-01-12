@@ -60,6 +60,9 @@ router.post(
       } = req.body;
 
       const profileFields = {};
+      profileFields.social = {};
+      profileFields.experience = [];
+      profileFields.education = [];
 
       profileFields.user = req.user.id;
       if (company) profileFields.company = company;
@@ -73,7 +76,6 @@ router.post(
       }
       if (createdDate) profileFields.createdDate = createdDate;
       if (social) {
-        profileFields.social = {};
         if (social.youtube) profileFields.social.youtube = social.youtube;
         if (social.instagram) profileFields.social.instagram = social.instagram;
         if (social.facebook) profileFields.social.facebook = social.facebook;
@@ -153,6 +155,81 @@ router.delete('/', auth, async (req, res) => {
 
     res.json({ msg: 'User, Profile and or Posts deleted!' });
   } catch (error) {
+    res.status(500).send('Server Error');
+  }
+});
+
+// @route   PUT api/profile/experiences
+// @desc    Add experience to profile
+// @access  Private
+
+router.put(
+  '/experience',
+  [
+    auth,
+    [
+      check('position', 'Position is required').not().isEmpty(),
+      check('company', 'Company is a required field').not().isEmpty(),
+      check('startDate', 'startDate is a required field').not().isEmpty(),
+    ],
+  ],
+  async (req, res) => {
+    try {
+      const errors = validationResult(req);
+      if (!errors.isEmpty()) {
+        return res.status(400).json({ errors: errors.array() });
+      }
+
+      const {
+        position,
+        company,
+        location,
+        startDate,
+        endDate,
+        isCurrent,
+        description,
+      } = req.body;
+
+      const expObj = {
+        position,
+        company,
+        location,
+        startDate,
+        endDate,
+        isCurrent,
+        description,
+      };
+      const profile = await Profile.findOne({ user: req.user.id });
+      profile.experience.unshift(expObj);
+
+      await profile.save();
+
+      res.json(profile);
+    } catch (error) {
+      console.log(error);
+      res.status(500).send('Server Error');
+    }
+  }
+);
+
+// @route   DELETE api/profile/experience/:experience_id
+// @desc    Delete experience by given exp obj id
+// @access  Private
+
+router.delete('/experience/:experience_id', auth, async (req, res) => {
+  try {
+    const profile = await Profile.findOne({ user: req.user.id });
+
+    const rmvIndex = profile.experience
+      .map((item) => item.id)
+      .indexOf(req.params.experience_id);
+
+    profile.experience.splice(rmvIndex, 1);
+
+    await profile.save();
+    res.json(profile);
+  } catch (error) {
+    console.log(error);
     res.status(500).send('Server Error');
   }
 });
