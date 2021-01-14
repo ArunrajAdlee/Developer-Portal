@@ -9,7 +9,11 @@ const App = () => {
     <Router>
       <ScrollToTop />
       <Switch>
-        <CustomRoute path="/login" pageComponent={Login} layoutComponent={Landing} />
+        <CustomRoute
+          path='/login'
+          pageComponent={Login}
+          layoutComponent={Landing}
+        />
       </Switch>
     </Router>
   );
