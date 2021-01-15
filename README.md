@@ -10,3 +10,13 @@ https://www.udemy.com/course/mern-stack-front-to-back/
 * Express
 * React
 * NodeJs
+
+More on MERN technologies in detail: https://www.mongodb.com/mern-stack
+
+# Steps to run (may change further into development):
+
+1. "npm run server" to start the server
+2. Navigate to /frontend
+3. "npm run dev" to start the react app and sass watcher/builder
+
+
