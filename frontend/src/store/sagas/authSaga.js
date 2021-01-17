@@ -24,7 +24,7 @@ export function* login(params) {
     console.log(data);
 
     yield put(setIsAuthenticated(true));
-    yield put(fetchUserInfoSuccess(payload));
+    yield put(fetchUserInfoSuccess(data));
   } catch (e) {
     yield put(fetchUserInfoFailure());
   }

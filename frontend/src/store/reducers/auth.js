@@ -5,7 +5,7 @@ export const initialStates = {
   isAuthenticated: false,
   user: {
     fetchStatus: '',
-    userInfo: {},
+    token: '',
   },
 };
 
@@ -25,7 +25,7 @@ export default handleActions(
     FETCH_USERINFO_SUCCESS: (state, { payload }) => ({
       ...state,
       user: {
-        ...payload,
+        token: payload.token,
         fetchStatus: authConstants.FETCH_USERINFO_SUCCESS,
       },
     }),

@@ -1,6 +1,8 @@
 import React from 'react';
 import { Box, Grid, TextField, Button } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
+import { useDispatch } from 'react-redux';
+import { fetchUserInfoStart } from '../../store/actions';
 
 const CssTextField = withStyles({
   root: {
@@ -40,6 +42,12 @@ const CSSButton = withStyles({
 })(Button);
 
 const Login = (props) => {
+  const dispatch = useDispatch();
+
+  const submitForm = () => {
+    console.log('hello');
+  };
+
   return (
     <>
       <Grid
@@ -76,6 +84,8 @@ const Login = (props) => {
                 color='inherit'
                 variant='outlined'
                 className='login-btn'
+                type='button'
+                onClick={() => submitForm()}
               >
                 Login
               </CSSButton>
