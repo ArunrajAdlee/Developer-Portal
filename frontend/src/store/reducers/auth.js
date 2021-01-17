@@ -14,21 +14,21 @@ export default handleActions(
       ...state,
       isAuthenticated: payload,
     }),
-    FETCH_USERCONTEXT_START: (state) => ({
+    FETCH_USERINFO_START: (state) => ({
       ...state,
       user: {
         ...state.user,
         fetchStatus: genericReduxConstants.REDUX_STATUS_START,
       },
     }),
-    FETCH_USERCONTEXT_SUCCESS: (state, { payload }) => ({
+    FETCH_USERINFO_SUCCESS: (state, { payload }) => ({
       ...state,
       user: {
         ...payload,
         fetchStatus: genericReduxConstants.REDUX_STATUS_SUCCESS,
       },
     }),
-    FETCH_USERCONTEXT_FAILURE: (state) => ({
+    FETCH_USERINFO_FAILURE: (state) => ({
       ...state,
       user: {
         ...state.user,

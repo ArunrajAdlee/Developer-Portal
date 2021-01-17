@@ -14,7 +14,7 @@ export function* login(params) {
       password: params.password,
     };
 
-    const { data, error } = yield call(getUserInfo);
+    const { data, error } = yield call(getUserInfo, apiParams);
 
     if (error) {
       yield put(fetchUserInfoFailure());
