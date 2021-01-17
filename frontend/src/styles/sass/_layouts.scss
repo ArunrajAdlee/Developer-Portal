@@ -1,5 +1,6 @@
 .landing-layout-container {
-  background: url(#{$img-path}/login_back.jpg) center no-repeat;
+  background: url(#{$img-path}/login_back.jpg) center;
+  background-size: cover;
   height: 100%;
 }
 

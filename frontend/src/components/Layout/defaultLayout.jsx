@@ -1,14 +1,16 @@
 import React from 'react';
 
-const Landing = (props) => {
+const DefaultLayout = (props) => {
   const { pageComponent: Component, matchProps } = props;
   return (
     <>
-      <div className='landing-layout-container'>
+      <div>
+        <h1>Header</h1>
         <Component {...matchProps} />
+        <h1>Footer</h1>
       </div>
     </>
   );
 };
 
-export default Landing;
+export default DefaultLayout;
