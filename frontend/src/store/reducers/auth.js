@@ -1,4 +1,5 @@
 import { handleActions } from 'redux-actions';
+import { authConstants } from '../constants';
 
 export const initialStates = {
   isAuthenticated: false,
@@ -18,21 +19,21 @@ export default handleActions(
       ...state,
       user: {
         ...state.user,
-        fetchStatus: genericReduxConstants.REDUX_STATUS_START,
+        fetchStatus: authConstants.FETCH_USERINFO_START,
       },
     }),
     FETCH_USERINFO_SUCCESS: (state, { payload }) => ({
       ...state,
       user: {
         ...payload,
-        fetchStatus: genericReduxConstants.REDUX_STATUS_SUCCESS,
+        fetchStatus: authConstants.FETCH_USERINFO_SUCCESS,
       },
     }),
     FETCH_USERINFO_FAILURE: (state) => ({
       ...state,
       user: {
         ...state.user,
-        fetchStatus: genericReduxConstants.REDUX_STATUS_FAILURE,
+        fetchStatus: authConstants.FETCH_USERINFO_FAILURE,
       },
     }),
   },
