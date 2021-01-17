@@ -10,8 +10,8 @@ import { getUserInfo } from '../../api';
 export function* login(params) {
   try {
     const apiParams = {
-      email: params.email,
-      password: params.password,
+      email: params.payload.email,
+      password: params.payload.password,
     };
 
     const { data, error } = yield call(getUserInfo, apiParams);

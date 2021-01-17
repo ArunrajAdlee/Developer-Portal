@@ -3,6 +3,8 @@ import { Box, Grid, TextField, Button } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 import { useDispatch } from 'react-redux';
 import { fetchUserInfoStart } from '../../store/actions';
+import { Formik, Form } from 'formik';
+import { FormikTextField } from '../Util/formikTextField';
 
 const CssTextField = withStyles({
   root: {
@@ -30,7 +32,7 @@ const CssTextField = withStyles({
       },
     },
   },
-})(TextField);
+})(FormikTextField);
 
 const CSSButton = withStyles({
   root: {
@@ -44,8 +46,9 @@ const CSSButton = withStyles({
 const Login = (props) => {
   const dispatch = useDispatch();
 
-  const submitForm = () => {
-    console.log('hello');
+  const handleSubmit = async (values, actions) => {
+    const params = { email: values.email, password: values.password };
+    dispatch(fetchUserInfoStart(params));
   };
 
   return (
@@ -61,35 +64,47 @@ const Login = (props) => {
         <Grid item xs={3}>
           <Box className='login-container' bgcolor='text.secondary'>
             <h1 className='align-center login-header'>Dev Portal</h1>
-            <form noValidate autoComplete='off'>
-              <CssTextField
-                label='E-mail'
-                style={{ margin: 15 }}
-                fullWidth
-                margin='normal'
-                InputLabelProps={{
-                  shrink: true,
-                }}
-              />
-              <CssTextField
-                label='Password'
-                style={{ margin: 15 }}
-                fullWidth
-                margin='normal'
-                InputLabelProps={{
-                  shrink: true,
-                }}
-              />
-              <CSSButton
-                color='inherit'
-                variant='outlined'
-                className='login-btn'
-                type='button'
-                onClick={() => submitForm()}
-              >
-                Login
-              </CSSButton>
-            </form>
+            <Formik
+              initialValues={{ email: '', password: '' }}
+              // validationSchema={LoginSchema}
+              onSubmit={(values, actions) => {
+                actions.setSubmitting(true);
+                handleSubmit(values, actions);
+              }}
+            >
+              {({ touched, errors, isSubmitting }) => (
+                <Form>
+                  <CssTextField
+                    formikKey='email'
+                    label='E-mail'
+                    style={{ margin: 15 }}
+                    fullWidth
+                    margin='normal'
+                    InputLabelProps={{
+                      shrink: true,
+                    }}
+                  />
+                  <CssTextField
+                    formikKey='password'
+                    label='Password'
+                    style={{ margin: 15 }}
+                    fullWidth
+                    margin='normal'
+                    InputLabelProps={{
+                      shrink: true,
+                    }}
+                  />
+                  <CSSButton
+                    color='inherit'
+                    variant='outlined'
+                    className='login-btn'
+                    type='submit'
+                  >
+                    Login
+                  </CSSButton>
+                </Form>
+              )}
+            </Formik>
           </Box>
         </Grid>
       </Grid>
