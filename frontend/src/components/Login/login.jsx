@@ -73,7 +73,7 @@ const Login = () => {
           justify='center'
           className='login-grid'
         >
-          <Grid item xs={3}>
+          <Grid item xs={12} lg={5} md={6}>
             <Box className='login-container' bgcolor='text.secondary'>
               <h1 className='align-center login-header'>Dev Portal</h1>
               <Formik
@@ -84,12 +84,11 @@ const Login = () => {
                   handleSubmit(values, actions);
                 }}
               >
-                {({ isSubmitting }) => (
+                {() => (
                   <Form>
                     <CssTextField
                       formikKey='email'
                       label='E-mail'
-                      style={{ margin: 15 }}
                       fullWidth
                       margin='normal'
                       InputLabelProps={{
@@ -99,8 +98,8 @@ const Login = () => {
                     <CssTextField
                       formikKey='password'
                       label='Password'
-                      style={{ margin: 15 }}
                       fullWidth
+                      type='password'
                       margin='normal'
                       InputLabelProps={{
                         shrink: true,
@@ -113,7 +112,7 @@ const Login = () => {
                       type='submit'
                     >
                       {authState.loginStatus === authConstants.LOGIN_START ? (
-                        <CircularProgress />
+                        <CircularProgress color='primary' size={30} />
                       ) : (
                         'Login'
                       )}
