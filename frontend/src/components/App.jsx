@@ -7,14 +7,16 @@ import Login from './Login/login';
 const App = () => {
   return (
     <Router>
-      <ScrollToTop />
-      <Switch>
-        <CustomRoute
-          path='/login'
-          pageComponent={Login}
-          layoutComponent={Landing}
-        />
-      </Switch>
+      <section className='app-container'>
+        <ScrollToTop />
+        <Switch>
+          <CustomRoute
+            path='/login'
+            pageComponent={Login}
+            layoutComponent={Landing}
+          />
+        </Switch>
+      </section>
     </Router>
   );
 };

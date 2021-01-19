@@ -1,5 +1,6 @@
 import { createAction } from 'redux-actions';
-import { authConstants } from '../constants';
+import { authConstants, globalAlertConstants } from '../constants';
+import { v4 as uuidv4 } from 'uuid';
 
 //--------AUTH ACTIONS----------
 export const fetchUserInfoStart = createAction(
@@ -14,4 +15,15 @@ export const fetchUserInfoFailure = createAction(
 export const setIsAuthenticated = createAction(
   authConstants.SET_IS_AUTHENTICATED
 );
+//--------------------------------
+
+//--------GLOBAL ALERT ACTIONS----------
+export const showAlert = createAction(
+  globalAlertConstants.SHOW_ALERT,
+  ({ msg, type }) => {
+    const id = uuidv4();
+    return { id, msg, type };
+  }
+);
+export const removeAlert = createAction(globalAlertConstants.REMOVE_ALERT);
 //--------------------------------

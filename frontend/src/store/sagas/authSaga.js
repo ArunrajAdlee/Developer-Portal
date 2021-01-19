@@ -3,6 +3,7 @@ import {
   setIsAuthenticated,
   fetchUserInfoSuccess,
   fetchUserInfoFailure,
+  showAlert,
 } from '../actions';
 import { authConstants } from '../constants';
 import { getUserInfo } from '../../api';
@@ -17,6 +18,7 @@ export function* login(params) {
     const { data, error } = yield call(getUserInfo, apiParams);
 
     if (error) {
+      yield put(showAlert({ msg: 'Invalid Credentials', type: 'error' }));
       yield put(fetchUserInfoFailure());
       return;
     }
@@ -26,6 +28,7 @@ export function* login(params) {
     yield put(setIsAuthenticated(true));
     yield put(fetchUserInfoSuccess(data));
   } catch (e) {
+    yield put(showAlert({ msg: 'Invalid Credentials', type: 'error' }));
     yield put(fetchUserInfoFailure());
   }
 }
