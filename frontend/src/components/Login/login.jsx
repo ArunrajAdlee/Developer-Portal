@@ -5,6 +5,7 @@ import { useDispatch } from 'react-redux';
 import { fetchUserInfoStart } from '../../store/actions';
 import { Formik, Form } from 'formik';
 import { FormikTextField } from '../Util/formikTextField';
+import * as Yup from 'yup';
 
 const CssTextField = withStyles({
   root: {
@@ -43,6 +44,11 @@ const CSSButton = withStyles({
   },
 })(Button);
 
+const LoginSchema = Yup.object().shape({
+  email: Yup.string().required('E-mail is required'),
+  password: Yup.string().required('Password is required'),
+});
+
 const Login = (props) => {
   const dispatch = useDispatch();
 
@@ -66,7 +72,7 @@ const Login = (props) => {
             <h1 className='align-center login-header'>Dev Portal</h1>
             <Formik
               initialValues={{ email: '', password: '' }}
-              // validationSchema={LoginSchema}
+              validationSchema={LoginSchema}
               onSubmit={(values, actions) => {
                 actions.setSubmitting(true);
                 handleSubmit(values, actions);
