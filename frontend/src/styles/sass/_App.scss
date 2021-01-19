@@ -47,7 +47,14 @@ code {
     monospace;
 }
 
-.global-alert {
+.global-alert-container {
+  z-index: 1000;
+  position: absolute;
+  top: 4%;
   width: 90%;
-  margin: 2% 5% 0 5%;
+  left: 5%;
+
+  & .global-alert {
+    margin-bottom: 15px;
+  }
 }

@@ -26,4 +26,6 @@ export const showAlert = createAction(
   }
 );
 export const removeAlert = createAction(globalAlertConstants.REMOVE_ALERT);
+export const clearAllAlerts = createAction(globalAlertConstants.CLEAR_ALL);
+
 //--------------------------------

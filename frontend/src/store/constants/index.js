@@ -8,4 +8,5 @@ export const authConstants = {
 export const globalAlertConstants = {
   SHOW_ALERT: 'SHOW_ALERT',
   REMOVE_ALERT: 'REMOVE_ALERT',
+  CLEAR_ALL: 'CLEAR_ALL',
 };
