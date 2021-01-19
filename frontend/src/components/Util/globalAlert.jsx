@@ -9,26 +9,24 @@ const GlobalAlert = () => {
   const dispatch = useDispatch();
 
   return (
-    <div className='global-alert-container'>
+    <div className="global-alert-container">
       {alertsArray && alertsArray.length > 0 && (
         <>
-          {alertsArray
-            .slice(Math.max(alertsArray.length - 3, 0))
-            .map((alert) => (
-              <Alert
-                onClose={() => dispatch(removeAlert({ id: alert.id }))}
-                className='global-alert'
-                key={alert.id}
-                severity={alert.type}
-              >
-                {alert.msg}
-              </Alert>
-            ))}
+          {alertsArray.slice(Math.max(alertsArray.length - 3, 0)).map((alert) => (
+            <Alert
+              onClose={() => dispatch(removeAlert({ id: alert.id }))}
+              className="global-alert"
+              key={alert.id}
+              severity={alert.type}
+            >
+              {alert.msg}
+            </Alert>
+          ))}
           <Button
-            className='fl-r'
+            className="fl-r"
             onClick={() => dispatch(clearAllAlerts())}
-            variant='outlined'
-            color='secondary'
+            variant="outlined"
+            color="secondary"
           >{`Clear All (${alertsArray.length})`}</Button>
         </>
       )}

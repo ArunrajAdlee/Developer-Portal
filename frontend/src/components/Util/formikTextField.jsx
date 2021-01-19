@@ -3,7 +3,7 @@ import { useField } from 'formik';
 import { TextField } from '@material-ui/core';
 
 export const FormikTextField = ({ formikKey, ...props }) => {
-  const [field, meta, helpers] = useField(formikKey);
+  const [field, meta] = useField(formikKey);
   return (
     <TextField
       id={field.name}
