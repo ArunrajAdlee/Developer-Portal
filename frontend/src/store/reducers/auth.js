@@ -3,10 +3,9 @@ import { authConstants } from '../constants';
 
 export const initialStates = {
   isAuthenticated: false,
-  user: {
-    fetchStatus: '',
-    token: '',
-  },
+  fetchStatus: '',
+  token: '',
+  user: null,
 };
 
 export default handleActions(
@@ -17,24 +16,18 @@ export default handleActions(
     }),
     FETCH_USERINFO_START: (state) => ({
       ...state,
-      user: {
-        ...state.user,
-        fetchStatus: authConstants.FETCH_USERINFO_START,
-      },
+      fetchStatus: authConstants.FETCH_USERINFO_START,
     }),
     FETCH_USERINFO_SUCCESS: (state, { payload }) => ({
       ...state,
-      user: {
-        token: payload.token,
-        fetchStatus: authConstants.FETCH_USERINFO_SUCCESS,
-      },
+      token: payload.token,
+      fetchStatus: authConstants.FETCH_USERINFO_SUCCESS,
     }),
     FETCH_USERINFO_FAILURE: (state) => ({
       ...state,
-      user: {
-        ...state.user,
-        fetchStatus: authConstants.FETCH_USERINFO_FAILURE,
-      },
+      token: '',
+      fetchStatus: authConstants.FETCH_USERINFO_FAILURE,
+      user: null,
     }),
   },
   initialStates

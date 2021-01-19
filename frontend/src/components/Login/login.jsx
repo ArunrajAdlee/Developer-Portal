@@ -53,7 +53,7 @@ const LoginSchema = Yup.object().shape({
 
 const Login = () => {
   const dispatch = useDispatch();
-  const loginStatus = useSelector((state) => state.auth.user.fetchStatus);
+  const authState = useSelector((state) => state.auth);
 
   const handleSubmit = async (values, actions) => {
     const params = { email: values.email, password: values.password };
@@ -62,7 +62,7 @@ const Login = () => {
 
   return (
     <>
-      {loginStatus === authConstants.FETCH_USERINFO_SUCCESS ? (
+      {authState.isAuthenticated ? (
         <Redirect to='/dashboard' />
       ) : (
         <Grid
@@ -112,7 +112,8 @@ const Login = () => {
                       className='login-btn'
                       type='submit'
                     >
-                      {loginStatus === authConstants.FETCH_USERINFO_START ? (
+                      {authState.fetchStatus ===
+                      authConstants.FETCH_USERINFO_START ? (
                         <CircularProgress />
                       ) : (
                         'Login'
