@@ -1,10 +1,5 @@
 import { call, put, takeLatest } from 'redux-saga/effects';
-import {
-  setIsAuthenticated,
-  fetchUserInfoSuccess,
-  fetchUserInfoFailure,
-  showAlert,
-} from '../actions';
+import { loginSuccess, loginFailure, showAlert } from '../actions';
 import { authConstants } from '../constants';
 import { getUserInfo } from '../../api';
 
@@ -19,20 +14,18 @@ export function* login(params) {
 
     if (error) {
       yield put(showAlert({ msg: 'Invalid Credentials', type: 'error' }));
-      yield put(fetchUserInfoFailure());
+      yield put(loginFailure());
       return;
     }
 
-    console.log(data);
-
-    yield put(setIsAuthenticated(true));
-    yield put(fetchUserInfoSuccess(data));
+    localStorage.setItem('token', data.token);
+    yield put(loginSuccess(data));
   } catch (e) {
     yield put(showAlert({ msg: 'Invalid Credentials', type: 'error' }));
-    yield put(fetchUserInfoFailure());
+    yield put(loginFailure());
   }
 }
 
 export function* watchUserAuth() {
-  yield takeLatest(authConstants.FETCH_USERINFO_START, login);
+  yield takeLatest(authConstants.LOGIN_START, login);
 }

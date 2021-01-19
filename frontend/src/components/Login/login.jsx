@@ -2,7 +2,7 @@ import React from 'react';
 import { Box, Grid, Button, CircularProgress } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchUserInfoStart } from '../../store/actions';
+import { loginStart } from '../../store/actions';
 import { Formik, Form } from 'formik';
 import { FormikTextField } from '../Util/formikTextField';
 import * as Yup from 'yup';
@@ -57,7 +57,7 @@ const Login = () => {
 
   const handleSubmit = async (values, actions) => {
     const params = { email: values.email, password: values.password };
-    dispatch(fetchUserInfoStart(params));
+    dispatch(loginStart(params));
   };
 
   return (
@@ -112,8 +112,7 @@ const Login = () => {
                       className='login-btn'
                       type='submit'
                     >
-                      {authState.fetchStatus ===
-                      authConstants.FETCH_USERINFO_START ? (
+                      {authState.loginStatus === authConstants.LOGIN_START ? (
                         <CircularProgress />
                       ) : (
                         'Login'

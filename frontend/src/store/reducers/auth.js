@@ -3,7 +3,7 @@ import { authConstants } from '../constants';
 
 export const initialStates = {
   isAuthenticated: false,
-  fetchStatus: '',
+  loginStatus: '',
   token: '',
   user: null,
 };
@@ -14,19 +14,20 @@ export default handleActions(
       ...state,
       isAuthenticated: payload,
     }),
-    FETCH_USERINFO_START: (state) => ({
+    LOGIN_START: (state) => ({
       ...state,
-      fetchStatus: authConstants.FETCH_USERINFO_START,
+      loginStatus: authConstants.LOGIN_START,
     }),
-    FETCH_USERINFO_SUCCESS: (state, { payload }) => ({
+    LOGIN_SUCCESS: (state, { payload }) => ({
       ...state,
       token: payload.token,
-      fetchStatus: authConstants.FETCH_USERINFO_SUCCESS,
+      isAuthenticated: true,
+      loginStatus: authConstants.LOGIN_SUCCESS,
     }),
-    FETCH_USERINFO_FAILURE: (state) => ({
+    LOGIN_FAILURE: (state) => ({
       ...state,
       token: '',
-      fetchStatus: authConstants.FETCH_USERINFO_FAILURE,
+      loginStatus: authConstants.LOGIN_FAILURE,
       user: null,
     }),
   },

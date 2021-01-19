@@ -3,15 +3,9 @@ import { authConstants, globalAlertConstants } from '../constants';
 import { v4 as uuidv4 } from 'uuid';
 
 //--------AUTH ACTIONS----------
-export const fetchUserInfoStart = createAction(
-  authConstants.FETCH_USERINFO_START
-);
-export const fetchUserInfoSuccess = createAction(
-  authConstants.FETCH_USERINFO_SUCCESS
-);
-export const fetchUserInfoFailure = createAction(
-  authConstants.FETCH_USERINFO_FAILURE
-);
+export const loginStart = createAction(authConstants.LOGIN_START);
+export const loginSuccess = createAction(authConstants.LOGIN_SUCCESS);
+export const loginFailure = createAction(authConstants.LOGIN_FAILURE);
 export const setIsAuthenticated = createAction(
   authConstants.SET_IS_AUTHENTICATED
 );
