@@ -1,53 +1,15 @@
 import React from 'react';
-import { Box, Grid, Button, CircularProgress } from '@material-ui/core';
-import { withStyles } from '@material-ui/core/styles';
+import { Box, Grid, CircularProgress } from '@material-ui/core';
 import { useDispatch, useSelector } from 'react-redux';
 import { loginStart } from '../../store/actions';
 import { Formik, Form } from 'formik';
-import { FormikTextField } from '../Util/formikTextField';
 import * as Yup from 'yup';
 import { authConstants } from '../../store/constants/index';
+import { CssTextField, CSSButton } from '../Util/StyledComponents/styledComponents';
 import { Redirect } from 'react-router-dom';
 
-const CssTextField = withStyles({
-  root: {
-    '& label.MuiFormLabel-root': {
-      color: 'white',
-    },
-    '& label.Mui-focused': {
-      color: '#64b5f6',
-    },
-    '& .MuiInput-underline': {
-      '&:before': {
-        borderBottomColor: 'white',
-      },
-      '&:after': {
-        borderBottomColor: '#64b5f6',
-      },
-      '&:hover:not($disabled):not($focused):not($error):before': {
-        borderBottom: `1px solid white`,
-      },
-    },
-    '& .MuiInput-root': {
-      '& input': {
-        borderColor: 'white',
-        color: 'white',
-      },
-    },
-  },
-})(FormikTextField);
-
-const CSSButton = withStyles({
-  root: {
-    '&:hover': {
-      color: '#64b5f6',
-      transition: 'all .2s ease',
-    },
-  },
-})(Button);
-
 const LoginSchema = Yup.object().shape({
-  email: Yup.string().required('E-mail is required'),
+  email: Yup.string().required('E-mail is required').email('E-mail format is invalid'),
   password: Yup.string().required('Password is required'),
 });
 
@@ -63,19 +25,19 @@ const Login = () => {
   return (
     <>
       {authState.isAuthenticated ? (
-        <Redirect to='/dashboard' />
+        <Redirect to="/dashboard" />
       ) : (
         <Grid
           container
           spacing={0}
-          direction='column'
-          alignItems='center'
-          justify='center'
-          className='login-grid'
+          direction="column"
+          alignItems="center"
+          justify="center"
+          className="login-register-grid"
         >
-          <Grid item xs={12} lg={5} md={6}>
-            <Box className='login-container' bgcolor='text.secondary'>
-              <h1 className='align-center login-header'>Dev Portal</h1>
+          <Grid item xs={10} lg={5} md={6}>
+            <Box className="login-register-container" bgcolor="text.secondary">
+              <h1 className="align-center header">Dev Portal</h1>
               <Formik
                 initialValues={{ email: '', password: '' }}
                 validationSchema={LoginSchema}
@@ -87,32 +49,27 @@ const Login = () => {
                 {() => (
                   <Form>
                     <CssTextField
-                      formikKey='email'
-                      label='E-mail'
+                      formikKey="email"
+                      label="E-mail"
                       fullWidth
-                      margin='normal'
+                      margin="normal"
                       InputLabelProps={{
                         shrink: true,
                       }}
                     />
                     <CssTextField
-                      formikKey='password'
-                      label='Password'
+                      formikKey="password"
+                      label="Password"
                       fullWidth
-                      type='password'
-                      margin='normal'
+                      type="password"
+                      margin="normal"
                       InputLabelProps={{
                         shrink: true,
                       }}
                     />
-                    <CSSButton
-                      color='inherit'
-                      variant='outlined'
-                      className='login-btn'
-                      type='submit'
-                    >
+                    <CSSButton color="inherit" variant="outlined" className="btn" type="submit">
                       {authState.loginStatus === authConstants.LOGIN_START ? (
-                        <CircularProgress color='primary' size={30} />
+                        <CircularProgress color="primary" size={30} />
                       ) : (
                         'Login'
                       )}

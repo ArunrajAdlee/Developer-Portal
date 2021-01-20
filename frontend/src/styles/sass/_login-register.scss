@@ -1,17 +1,17 @@
-.login-grid {
+.login-register-grid {
   min-height: 100vh;
 
-  & .login-container {
+  & .login-register-container {
     text-align: right;
     color: white;
     padding: 50px 75px 50px 65px;
 
-    & .login-header {
+    & .header {
       font-size: 42px;
       margin-bottom: 25px;
     }
 
-    & .login-btn {
+    & .btn {
       margin-top: 50px;
     }
   }
