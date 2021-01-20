@@ -1,6 +1,7 @@
 import React from 'react';
-import { Box, Grid, CircularProgress } from '@material-ui/core';
+import { Grid, CircularProgress } from '@material-ui/core';
 import { useDispatch, useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { registerStart } from '../../store/actions';
 import { Formik, Form } from 'formik';
 import * as Yup from 'yup';
@@ -29,7 +30,9 @@ const Register = () => {
 
   return (
     <>
-      <h1 className="align-center header">Dev Portal - Sign Up</h1>
+      <Link className="align-center header" to="/dashboard">
+        Dev Portal
+      </Link>
       <Formik
         initialValues={{ email: '', password: '', confirmPassword: '', name: '' }}
         validationSchema={RegisterSchema}

@@ -1,11 +1,12 @@
 import React from 'react';
-import { Box, Grid, CircularProgress } from '@material-ui/core';
+import { CircularProgress } from '@material-ui/core';
 import { useDispatch, useSelector } from 'react-redux';
 import { loginStart } from '../../store/actions';
 import { Formik, Form } from 'formik';
 import * as Yup from 'yup';
 import { authConstants } from '../../store/constants/index';
 import { CssTextField, CSSButton } from '../Util/StyledComponents/styledComponents';
+import { Link } from 'react-router-dom';
 
 const LoginSchema = Yup.object().shape({
   email: Yup.string().required('E-mail is required').email('E-mail format is invalid'),
@@ -23,7 +24,9 @@ const Login = () => {
 
   return (
     <>
-      <h1 className="align-center header">Dev Portal</h1>
+      <Link className="align-center header" to="/dashboard">
+        Dev Portal
+      </Link>
       <Formik
         initialValues={{ email: '', password: '' }}
         validationSchema={LoginSchema}
@@ -53,9 +56,14 @@ const Login = () => {
                 shrink: true,
               }}
             />
-            <CSSButton color="inherit" variant="outlined" className="btn" type="submit">
-              {loginStatus === authConstants.LOGIN_START ? <CircularProgress color="primary" size={30} /> : 'Login'}
-            </CSSButton>
+            <div className="btn">
+              <Link className="register-btn" to="/register">
+                Sign-up
+              </Link>
+              <CSSButton color="inherit" variant="outlined" type="submit">
+                {loginStatus === authConstants.LOGIN_START ? <CircularProgress color="primary" size={30} /> : 'Login'}
+              </CSSButton>
+            </div>
           </Form>
         )}
       </Formik>
