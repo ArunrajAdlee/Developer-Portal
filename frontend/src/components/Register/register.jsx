@@ -1,7 +1,7 @@
 import React from 'react';
-import { Box, Grid, Button, CircularProgress } from '@material-ui/core';
+import { Box, Grid, CircularProgress } from '@material-ui/core';
 import { useDispatch, useSelector } from 'react-redux';
-import { loginStart } from '../../store/actions';
+import { registerStart } from '../../store/actions';
 import { Formik, Form } from 'formik';
 import * as Yup from 'yup';
 import { CssTextField, CSSButton } from '../Util/StyledComponents/styledComponents';
@@ -24,8 +24,8 @@ const Register = () => {
   const authState = useSelector((state) => state.auth);
 
   const handleSubmit = async (values, actions) => {
-    const params = { email: values.email, password: values.password };
-    dispatch(loginStart(params));
+    const params = { email: values.email, password: values.password, name: values.name };
+    dispatch(registerStart(params));
   };
 
   return (
@@ -96,7 +96,7 @@ const Register = () => {
                       </Grid>
                     </Grid>
                     <CSSButton color="inherit" variant="outlined" className="btn" type="submit">
-                      {authState.loginStatus === authConstants.LOGIN_START ? (
+                      {authState.registerStatus === authConstants.REGISTER_START ? (
                         <CircularProgress color="primary" size={30} />
                       ) : (
                         'Confirm'

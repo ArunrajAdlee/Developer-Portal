@@ -5,6 +5,7 @@ export const initialStates = {
   isAuthenticated: false,
   loginStatus: '',
   userInfoStatus: '',
+  registerStatus: '',
   token: '',
   user: null,
 };
@@ -14,6 +15,19 @@ export default handleActions(
     SET_IS_AUTHENTICATED: (state, { payload }) => ({
       ...state,
       isAuthenticated: payload,
+    }),
+    REGISTER_START: (state) => ({
+      ...state,
+      registerStatus: authConstants.REGISTER_START,
+    }),
+    REGISTER_SUCCESS: (state, { payload }) => ({
+      ...state,
+      registerStatus: authConstants.REGISTER_SUCCESS,
+      token: payload.token,
+    }),
+    REGISTER_FAILURE: (state) => ({
+      ...state,
+      registerStatus: authConstants.REGISTER_FAILURE,
     }),
     LOGIN_START: (state) => ({
       ...state,

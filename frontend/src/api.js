@@ -7,7 +7,19 @@ export async function login({ email, password }) {
       password: password,
     });
   } catch (e) {
-    console.log(e);
+    return { error: e.response };
+  }
+}
+
+export async function register({ email, password, name }) {
+  try {
+    return await server.post(`/api/users`, {
+      email: email,
+      password: password,
+      name: name,
+    });
+  } catch (e) {
+    return { error: e.response };
   }
 }
 
@@ -15,6 +27,6 @@ export async function getUserInformation() {
   try {
     return await server.get(`/api/auth`);
   } catch (e) {
-    console.log(e);
+    return { error: e.response };
   }
 }

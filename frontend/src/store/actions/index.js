@@ -9,6 +9,10 @@ export const setIsLoaded = createAction(appConstants.SET_IS_LOADED);
 //--------------------------------
 
 //--------AUTH ACTIONS----------
+export const registerStart = createAction(authConstants.REGISTER_START);
+export const registerSuccess = createAction(authConstants.REGISTER_SUCCESS);
+export const registerFailure = createAction(authConstants.REGISTER_FAILURE);
+
 export const loginStart = createAction(authConstants.LOGIN_START);
 export const loginSuccess = createAction(authConstants.LOGIN_SUCCESS);
 export const loginFailure = createAction(authConstants.LOGIN_FAILURE);
