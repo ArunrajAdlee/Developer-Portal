@@ -10,6 +10,8 @@ import { useEffect } from 'react';
 import { startBootstrap } from '../store/actions';
 import { CircularProgress, Backdrop } from '@material-ui/core';
 import Error404 from './Util/Error404';
+import DefaultLayout from './Layout/defaultLayout';
+import Dashboard from './Dashboard/dashboard';
 
 const App = () => {
   const dispatch = useDispatch();
@@ -27,6 +29,7 @@ const App = () => {
         <Switch>
           <CustomRoute path="/login" pageComponent={Login} layoutComponent={Landing} />
           <CustomRoute path="/register" pageComponent={Register} layoutComponent={Landing} />
+          <CustomRoute exact path="/" pageComponent={Dashboard} layoutComponent={DefaultLayout} />
           <CustomRoute pageComponent={Error404} layoutComponent={Landing} />
         </Switch>
       </section>
