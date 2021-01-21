@@ -9,6 +9,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { startBootstrap } from '../store/actions';
 import { CircularProgress, Backdrop } from '@material-ui/core';
+import Error404 from './Util/Error404';
 
 const App = () => {
   const dispatch = useDispatch();
@@ -26,6 +27,7 @@ const App = () => {
         <Switch>
           <CustomRoute path="/login" pageComponent={Login} layoutComponent={Landing} />
           <CustomRoute path="/register" pageComponent={Register} layoutComponent={Landing} />
+          <CustomRoute pageComponent={Error404} layoutComponent={Landing} />
         </Switch>
       </section>
     </Router>
