@@ -23,15 +23,15 @@ const Nav = () => {
   const classes = useStyles();
 
   return (
-    <AppBar position="static">
+    <AppBar color="inherit" position="static">
       <Toolbar>
-        <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
+        <IconButton edge="start" className={classes.menuButton} aria-label="menu">
           <MenuIcon />
         </IconButton>
-        <Typography variant="h6" className={classes.title}>
+        <Typography variant="h6" color="primary" className={classes.title}>
           News
         </Typography>
-        <Button color="inherit">Login</Button>
+        <Button variant="contained">Login</Button>
       </Toolbar>
     </AppBar>
   );
