@@ -19,4 +19,8 @@ More on MERN technologies in detail: https://www.mongodb.com/mern-stack
 2. Navigate to /frontend
 3. "npm run dev" to start the react app and sass watcher/builder
 
+# MISC
+
+Current Color Theme: https://material.io/resources/color/#!/?view.left=0&view.right=1&primary.color=212121&primary.text.color=ffffff&secondary.color=6f1e8c
+
 
