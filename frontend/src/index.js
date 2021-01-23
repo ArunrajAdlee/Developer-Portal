@@ -10,7 +10,18 @@ import green from '@material-ui/core/colors/green';
 
 let theme = createMuiTheme({
   palette: {
-    type: 'dark',
+    primary: {
+      main: '#212121',
+      light: '#484848',
+      dark: '#000000',
+    },
+    secondary: {
+      main: '#d50000',
+      light: '#ff5131',
+      dark: '#9b0000',
+    },
+    contrastThreshold: 3,
+    tonalOffset: 0.2,
   },
 });
 theme = responsiveFontSizes(theme);
