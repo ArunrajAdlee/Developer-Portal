@@ -29,6 +29,7 @@ const App = () => {
         <Switch>
           <CustomRoute path="/login" pageComponent={Login} layoutComponent={Landing} />
           <CustomRoute path="/register" pageComponent={Register} layoutComponent={Landing} />
+          <CustomRoute exact path="/dashboard" pageComponent={Dashboard} layoutComponent={DefaultLayout} />
           <CustomRoute exact path="/" pageComponent={Dashboard} layoutComponent={DefaultLayout} />
           <CustomRoute pageComponent={Error404} layoutComponent={Landing} />
         </Switch>
