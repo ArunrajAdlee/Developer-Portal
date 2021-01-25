@@ -18,14 +18,16 @@
   }
 
   & .dev-or-employer {
-    background-color: #ede5e0;
+    background-color: #93b2d3;
   }
 
   & .create-account {
-    background-color: #8dd860;
+    background: url(#{$img-path}/vines_bg2.png) center;
+    background-color: #7fc0ae;
   }
 
   & .our-future {
+    background: url(#{$img-path}/wave2.png) center;
     background-color: #4246ad;
   }
 }
