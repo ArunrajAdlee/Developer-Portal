@@ -24,7 +24,7 @@ const Login = () => {
 
   return (
     <>
-      <Link className="align-center header" to="/dashboard">
+      <Link className="align-center header" to="/">
         Dev Portal
       </Link>
       <Formik
