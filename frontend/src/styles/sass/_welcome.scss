@@ -1,0 +1,31 @@
+.welcome-container {
+  & .section {
+    height: 650px;
+    max-width: 100%;
+    text-align: center;
+
+    &.small {
+      height: 300px;
+    }
+
+    &.med {
+      height: 400px;
+    }
+
+    &.large {
+      height: 550px;
+    }
+  }
+
+  & .dev-or-employer {
+    background-color: #ede5e0;
+  }
+
+  & .create-account {
+    background-color: #8dd860;
+  }
+
+  & .our-future {
+    background-color: #4246ad;
+  }
+}
