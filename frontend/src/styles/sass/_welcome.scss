@@ -1,20 +1,25 @@
 .welcome-container {
   & .section {
-    height: 650px;
+    min-height: 650px;
     max-width: 100%;
     text-align: center;
+    padding: 45px;
 
     &.small {
-      height: 300px;
+      min-height: 300px;
     }
 
     &.med {
-      height: 400px;
+      min-height: 400px;
     }
 
     &.large {
-      height: 550px;
+      min-height: 550px;
     }
+  }
+
+  & .img-container {
+    margin: 35px 0 35px 0;
   }
 
   & .dev-or-employer {
