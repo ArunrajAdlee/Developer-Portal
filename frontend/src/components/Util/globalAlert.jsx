@@ -3,10 +3,20 @@ import Alert from '@material-ui/lab/Alert';
 import { useSelector, useDispatch } from 'react-redux';
 import { removeAlert, clearAllAlerts } from '../../store/actions';
 import { Button } from '@material-ui/core';
+import { makeStyles } from '@material-ui/core/styles';
+
+const styles = makeStyles((theme) => ({
+  button: {
+    color: theme.palette.error.main,
+    float: 'right',
+    borderColor: theme.palette.error.main,
+  },
+}));
 
 const GlobalAlert = () => {
   const alertsArray = useSelector((state) => state.globalAlert);
   const dispatch = useDispatch();
+  const classes = styles();
 
   return (
     <div className="global-alert-container">
@@ -26,7 +36,7 @@ const GlobalAlert = () => {
             className="fl-r"
             onClick={() => dispatch(clearAllAlerts())}
             variant="outlined"
-            color="secondary"
+            className={classes.button}
           >{`Clear All (${alertsArray.length})`}</Button>
         </>
       )}
