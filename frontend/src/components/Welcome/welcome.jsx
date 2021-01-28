@@ -1,10 +1,10 @@
 import React from 'react';
-import { Grid, Typography, Button, Card, CardContent, CardActions } from '@material-ui/core';
-import collaborate from '../../assets/img/collaborate.png';
-import rocket from '../../assets/img/rocket.png';
-import profile from '../../assets/img/profile.png';
-import forum from '../../assets/img/forum.png';
-import job_search from '../../assets/img/job_search.png';
+import { Grid, Typography, Button, Card, CardContent } from '@material-ui/core';
+import collaborate from '../../assets/img/welcome_page/collaborate.png';
+import rocket from '../../assets/img/welcome_page/rocket.png';
+import profile from '../../assets/img/welcome_page/profile.png';
+import forum from '../../assets/img/welcome_page/forum.png';
+import job_search from '../../assets/img/welcome_page/job_search.png';
 
 const Welcome = () => {
   return (
@@ -16,7 +16,7 @@ const Welcome = () => {
             <Typography variant="subtitle1">- Peter Kropotkin</Typography>
           </Typography>
           <Grid item xs={12} className="img-container">
-            <img src={collaborate} width="400px" height="auto" />
+            <img alt="Collaborate-img" src={collaborate} width="400px" height="auto" />
             <Typography variant="subtitle1">
               Collaborate with fellow developers to fix bugs, debate tough topics, or just chat about the latest
               technologoies
@@ -41,7 +41,7 @@ const Welcome = () => {
             </Grid>
           </Grid>
           <Grid item lg={4} xs={12}>
-            <img src={rocket} width="400px" height="auto" />
+            <img alt="rocket-img" src={rocket} width="400px" height="auto" />
           </Grid>
         </Grid>
         <Grid container alignItems="center" justify="center" className="section med create-account">
@@ -66,7 +66,7 @@ const Welcome = () => {
             <Grid item xs={12} lg={3}>
               <Card>
                 <CardContent>
-                  <img src={profile} width="250px" height="auto" />
+                  <img alt="profile-placeholder-img" src={profile} width="250px" height="auto" />
                   <Typography variant="subtitle2">
                     A fully-fledged profile page where users can display their skills, work history, git repos, and more
                   </Typography>
@@ -76,7 +76,7 @@ const Welcome = () => {
             <Grid item xs={12} lg={3}>
               <Card>
                 <CardContent>
-                  <img src={forum} width="250px" height="auto" />
+                  <img alt="forum-placeholder-img" src={forum} width="250px" height="auto" />
                   <Typography variant="subtitle2">A forum section where users can post and answer questions</Typography>
                 </CardContent>
               </Card>
@@ -84,7 +84,7 @@ const Welcome = () => {
             <Grid item xs={12} lg={3}>
               <Card>
                 <CardContent>
-                  <img src={job_search} width="300px" height="auto" />
+                  <img alt="postings-placeholder-img" src={job_search} width="300px" height="auto" />
                   <Typography variant="subtitle2">A job postings page where users post and apply for jobs</Typography>
                 </CardContent>
               </Card>
