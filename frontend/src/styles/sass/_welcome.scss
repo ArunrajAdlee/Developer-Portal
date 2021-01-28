@@ -14,21 +14,21 @@
     }
 
     &.large {
-      min-height: 550px;
+      min-height: 700px;
     }
+  }
+
+  & .spaced-button {
+    margin: 45px 0 45px 0;
   }
 
   & .img-container {
     margin: 35px 0 35px 0;
   }
 
-  & .dev-or-employer {
+  & .launch-postings {
     background: rgb(255, 172, 55);
     background: linear-gradient(90deg, rgba(255, 172, 55, 1) 0%, rgba(139, 32, 32, 1) 77%, rgba(2, 0, 36, 1) 100%);
-
-    & .dev-button {
-      margin: 45px 0 45px 0;
-    }
   }
 
   & .create-account {
@@ -39,5 +39,6 @@
   & .our-future {
     background: url(#{$img-path}/wave2.png) center;
     background-color: #4246ad;
+    color: white;
   }
 }
