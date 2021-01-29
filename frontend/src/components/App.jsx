@@ -4,7 +4,6 @@ import CustomRoute from './Route/customRoute';
 import Landing from './Layout/landing';
 import Login from './Login/login';
 import Register from './Register/register';
-import GlobalAlert from './Util/globalAlert';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { startBootstrap } from '../store/actions';
@@ -27,7 +26,6 @@ const App = () => {
     <Router>
       <section className="app-container">
         <ScrollToTop />
-        <GlobalAlert />
         <Switch>
           <CustomRoute path="/login" pageComponent={Login} layoutComponent={Landing} />
           <CustomRoute path="/register" pageComponent={Register} layoutComponent={Landing} />

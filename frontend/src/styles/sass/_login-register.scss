@@ -1,5 +1,7 @@
 .login-register-grid {
-  min-height: 100vh;
+  height: 100%;
+  flex-wrap: nowrap !important;
+  overflow-y: scroll;
 
   & .login-register-container {
     text-align: right;

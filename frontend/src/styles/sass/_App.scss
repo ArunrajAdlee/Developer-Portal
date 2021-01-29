@@ -26,6 +26,10 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+.app-container {
+  height: 100%;
+}
+
 h1,
 h2,
 h3,
@@ -51,11 +55,7 @@ code {
 }
 
 .global-alert-container {
-  z-index: 1000;
-  position: absolute;
-  top: 4%;
   width: 90%;
-  left: 5%;
 
   & .global-alert {
     margin-bottom: 15px;
