@@ -5,7 +5,6 @@ import './styles/index.css';
 import store from './store';
 import { Provider } from 'react-redux';
 import { createMuiTheme, responsiveFontSizes, ThemeProvider } from '@material-ui/core/styles';
-import { red } from '@material-ui/core/colors/red';
 
 let theme = createMuiTheme({
   palette: {
