@@ -1,6 +1,5 @@
 import React from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSadTear } from '@fortawesome/free-solid-svg-icons';
+import SentimentVeryDissatisfiedIcon from '@material-ui/icons/SentimentVeryDissatisfied';
 import { Link } from 'react-router-dom';
 import { Grid } from '@material-ui/core';
 
@@ -15,7 +14,7 @@ const Error404 = () => {
             </Link>
           </Grid>
           <Grid item xs={12}>
-            <FontAwesomeIcon className="error-image" icon={faSadTear} />
+            <SentimentVeryDissatisfiedIcon className="error-image" />
             <h3>404</h3>
             <h3>The page you were looking for cannot be found!</h3>
           </Grid>
