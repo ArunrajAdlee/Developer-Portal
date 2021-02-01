@@ -1,5 +1,5 @@
 import { createAction } from 'redux-actions';
-import { authConstants, globalAlertConstants, appConstants } from '../constants';
+import { authConstants, globalAlertConstants, appConstants, profileConstants } from '../constants';
 import { v4 as uuidv4 } from 'uuid';
 
 //--------APP ACTIONS----------
@@ -22,6 +22,12 @@ export const setIsAuthenticated = createAction(authConstants.SET_IS_AUTHENTICATE
 export const getUserInfoStart = createAction(authConstants.GET_USERINFO_START);
 export const getUserInfoSuccess = createAction(authConstants.GET_USERINFO_SUCCESS);
 export const getUserInfoFailure = createAction(authConstants.GET_USERINFO_FAILURE);
+//--------------------------------
+
+//--------PROFILE ACTIONS----------
+export const getProfileStart = createAction(profileConstants.GET_PROFILE_START);
+export const getProfileSuccess = createAction(profileConstants.GET_PROFILE_SUCCESS);
+export const getProfileFailure = createAction(profileConstants.GET_PROFILE_FAILURE);
 //--------------------------------
 
 //--------GLOBAL ALERT ACTIONS----------

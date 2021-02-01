@@ -30,3 +30,19 @@ export async function getUserInformation() {
     return { error: e.response };
   }
 }
+
+export async function getMyProfileInfo() {
+  try {
+    return await server.get(`/api/profile/me`);
+  } catch (e) {
+    return { error: e.response };
+  }
+}
+
+export async function getProfileInfoByUserId({ userId }) {
+  try {
+    return await server.get(`/api/profile/user/${userId}`);
+  } catch (e) {
+    return { error: e.response };
+  }
+}
