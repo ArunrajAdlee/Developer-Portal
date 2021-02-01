@@ -1,5 +1,5 @@
 import { call, put, takeLatest } from 'redux-saga/effects';
-import { getProfileSuccess, getProfileFailure } from '../actions';
+import { getProfileSuccess, getProfileFailure, showAlert } from '../actions';
 import { profileConstants } from '../constants';
 import { getMyProfileInfo, getProfileInfoByUserId } from '../../api';
 
