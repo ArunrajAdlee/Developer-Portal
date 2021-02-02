@@ -7,7 +7,6 @@ import { Redirect, useParams } from 'react-router-dom';
 
 const Profile = () => {
   const dispatch = useDispatch();
-  const user = useSelector((state) => state.auth.user);
   const profile = useSelector((state) => state.profile);
   const { userID } = useParams();
 
@@ -21,7 +20,7 @@ const Profile = () => {
       <div className="profile-container">
         <Grid spacing={0} container alignItems="center" justify="center">
           <Grid item>
-            <Avatar alt="User Avatar" src={user.avatar} />
+            <Avatar alt="User Avatar" src={profile.profile.user.avatar} />
           </Grid>
         </Grid>
       </div>
