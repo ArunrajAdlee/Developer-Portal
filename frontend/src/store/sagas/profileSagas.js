@@ -6,12 +6,10 @@ import { getMyProfileInfo, getProfileInfoByUserId } from '../../api';
 export function* getProfileSaga(params) {
   try {
     let apiResult = null;
-    //get profile by userId
-    if (params.userId) {
-      apiResult = yield call(getProfileInfoByUserId, params);
-    }
-    //get profile by token (current logged in user)
-    else {
+    //get profile by userID
+    if (params.payload && params.payload.userID) {
+      apiResult = yield call(getProfileInfoByUserId, { userID: params.payload.userID });
+    } else {
       apiResult = yield call(getMyProfileInfo);
     }
 

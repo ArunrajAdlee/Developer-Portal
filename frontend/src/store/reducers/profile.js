@@ -14,7 +14,7 @@ export default handleActions(
     }),
     GET_PROFILE_SUCCESS: (state, { payload }) => ({
       ...state,
-      profile: payload.profile,
+      profile: payload,
       profileApiStatus: profileConstants.GET_PROFILE_SUCCESS,
     }),
     GET_PROFILE_FAILURE: (state) => ({

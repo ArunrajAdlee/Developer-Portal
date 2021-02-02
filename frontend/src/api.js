@@ -39,9 +39,9 @@ export async function getMyProfileInfo() {
   }
 }
 
-export async function getProfileInfoByUserId({ userId }) {
+export async function getProfileInfoByUserId({ userID }) {
   try {
-    return await server.get(`/api/profile/user/${userId}`);
+    return await server.get(`/api/profile/user/${userID}`);
   } catch (e) {
     return { error: e.response };
   }
