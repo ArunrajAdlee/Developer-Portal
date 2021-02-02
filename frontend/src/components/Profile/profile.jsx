@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Avatar, Grid, CircularProgress, Backdrop, Typography } from '@material-ui/core';
 import { useDispatch, useSelector } from 'react-redux';
 import { profileConstants } from '../../store/constants/index';
@@ -8,9 +8,14 @@ import { Redirect, useParams } from 'react-router-dom';
 const Profile = () => {
   const dispatch = useDispatch();
   const profile = useSelector((state) => state.profile);
+  const auth = useSelector((state) => state.auth);
+  const [currentUserProfile, setCurrentUserProfile] = useState(false);
   const { userID } = useParams();
 
   useEffect(() => {
+    if (auth.user && auth.user._id === userID) {
+      setCurrentUserProfile(true);
+    }
     dispatch(getProfileStart({ userID }));
   }, []);
 
@@ -49,6 +54,8 @@ const Profile = () => {
           </Grid>
         </Grid>
       </div>
+    ) : currentUserProfile ? (
+      <h1> Set up your profile</h1>
     ) : (
       <Redirect to="/404" />
     )

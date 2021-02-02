@@ -17,6 +17,9 @@ export const loginStart = createAction(authConstants.LOGIN_START);
 export const loginSuccess = createAction(authConstants.LOGIN_SUCCESS);
 export const loginFailure = createAction(authConstants.LOGIN_FAILURE);
 
+export const logoutStart = createAction(authConstants.LOGOUT_START);
+export const logoutSuccess = createAction(authConstants.LOGOUT_SUCCESS);
+
 export const setIsAuthenticated = createAction(authConstants.SET_IS_AUTHENTICATED);
 
 export const getUserInfoStart = createAction(authConstants.GET_USERINFO_START);

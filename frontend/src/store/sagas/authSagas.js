@@ -2,6 +2,7 @@ import { call, put, takeLatest } from 'redux-saga/effects';
 import {
   loginSuccess,
   loginFailure,
+  logoutSuccess,
   showAlert,
   getUserInfoFailure,
   getUserInfoSuccess,
@@ -36,6 +37,17 @@ export function* loginSaga(params) {
   } catch (e) {
     yield put(showAlert({ msg: 'Server Error!', type: 'error' }));
     yield put(loginFailure());
+  }
+}
+
+export function* logoutSaga() {
+  try {
+    localStorage.removeItem('token');
+    delete server.defaults.headers.common['x-auth-token'];
+
+    yield put(logoutSuccess());
+  } catch (e) {
+    yield put(showAlert({ msg: 'Server Error!', type: 'error' }));
   }
 }
 
@@ -96,4 +108,5 @@ export function* watchUserAuth() {
   yield takeLatest(authConstants.REGISTER_START, registerSaga);
   yield takeLatest(authConstants.LOGIN_START, loginSaga);
   yield takeLatest(authConstants.GET_USERINFO_START, getUserInfoSaga);
+  yield takeLatest(authConstants.LOGOUT_START, logoutSaga);
 }

@@ -46,6 +46,16 @@ export default handleActions(
       isAuthenticated: false,
       user: null,
     }),
+    LOGOUT_START: (state) => ({
+      ...state,
+    }),
+    LOGOUT_SUCCESS: (state) => ({
+      ...state,
+      token: '',
+      loginStatus: '',
+      isAuthenticated: false,
+      user: null,
+    }),
     GET_USERINFO_START: (state) => ({
       ...state,
       userInfoStatus: authConstants.GET_USERINFO_START,
