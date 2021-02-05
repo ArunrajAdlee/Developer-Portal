@@ -19,11 +19,13 @@ const useStyles = makeStyles((theme) => ({
   },
   title: {
     flexGrow: 1,
+    color: 'inherit',
+    textDecoration: 'none',
   },
 }));
 
 const Nav = () => {
-  const isAuth = useSelector((state) => state.auth.isAuthenticated);
+  const auth = useSelector((state) => state.auth);
   const classes = useStyles();
   const dispatch = useDispatch();
   const history = useHistory();
@@ -39,13 +41,18 @@ const Nav = () => {
         <IconButton color="inherit" edge="start" className={classes.menuButton} aria-label="menu">
           <MenuIcon />
         </IconButton>
-        <Typography variant="h6" className={classes.title}>
-          Dev-Portal
-        </Typography>
-        {isAuth ? (
-          <Button onClick={logout} color="inherit">
-            Logout
-          </Button>
+        <Link className={classes.title} to={`/`}>
+          <Typography variant="h6">Dev-Portal</Typography>
+        </Link>
+        {auth.isAuthenticated ? (
+          <>
+            <Link className="link-no-styles" to={`/profile/${auth.user._id}`}>
+              <Button color="inherit">My Profile</Button>
+            </Link>
+            <Button onClick={logout} color="inherit">
+              Logout
+            </Button>
+          </>
         ) : (
           <Link className="link-no-styles" to="/login">
             <Button color="inherit">Login</Button>

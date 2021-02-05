@@ -9,7 +9,7 @@ const Landing = (props) => {
   const { pageComponent: Component, matchProps } = props;
 
   return authState.isAuthenticated ? (
-    <Redirect to="/dashboard" />
+    <Redirect to="/" />
   ) : (
     <>
       <div className="landing-layout-container">
