@@ -48,17 +48,7 @@ router.post(
         return res.status(400).json({ errors: errors.array() });
       }
 
-      const {
-        company,
-        bio,
-        gitUsername,
-        website,
-        location,
-        status,
-        skills,
-        createdDate,
-        social,
-      } = req.body;
+      const { company, bio, gitUsername, website, location, status, skills, createdDate, social } = req.body;
 
       const profileFields = {};
       profileFields.social = {};
@@ -87,11 +77,7 @@ router.post(
       let profile = await Profile.findOne({ user: req.user.id });
       if (profile) {
         //Update existing profile
-        profile = await Profile.findOneAndUpdate(
-          { user: req.user.id },
-          { $set: profileFields },
-          { new: true }
-        );
+        profile = await Profile.findOneAndUpdate({ user: req.user.id }, { $set: profileFields }, { new: true });
         return res.json(profile);
       }
 
@@ -134,8 +120,7 @@ router.get('/user/:user_id', async (req, res) => {
 
     res.json(profile);
   } catch (error) {
-    if (error.kind == 'ObjectId')
-      return res.status(400).json({ msg: "This user doesn't have a profile!" });
+    if (error.kind == 'ObjectId') return res.status(400).json({ msg: "This user doesn't have a profile!" });
 
     res.status(500).send('Server Error');
   }
@@ -172,6 +157,7 @@ router.put(
       check('position', 'Position is required').not().isEmpty(),
       check('company', 'Company is a required field').not().isEmpty(),
       check('startDate', 'startDate is a required field').not().isEmpty(),
+      check('location', 'location is a required field').not().isEmpty(),
     ],
   ],
   async (req, res) => {
@@ -181,15 +167,7 @@ router.put(
         return res.status(400).json({ errors: errors.array() });
       }
 
-      const {
-        position,
-        company,
-        location,
-        startDate,
-        endDate,
-        isCurrent,
-        description,
-      } = req.body;
+      const { position, company, location, startDate, endDate, isCurrent, description } = req.body;
 
       const expObj = {
         position,
@@ -221,9 +199,7 @@ router.delete('/experience/:experience_id', auth, async (req, res) => {
   try {
     const profile = await Profile.findOne({ user: req.user.id });
 
-    const rmvIndex = profile.experience
-      .map((item) => item.id)
-      .indexOf(req.params.experience_id);
+    const rmvIndex = profile.experience.map((item) => item.id).indexOf(req.params.experience_id);
 
     profile.experience.splice(rmvIndex, 1);
 
@@ -284,9 +260,7 @@ router.delete('/education/:education_id', auth, async (req, res) => {
   try {
     const profile = await Profile.findOne({ user: req.user.id });
 
-    const rmvIndex = profile.education
-      .map((item) => item.id)
-      .indexOf(req.params.education_id);
+    const rmvIndex = profile.education.map((item) => item.id).indexOf(req.params.education_id);
 
     profile.education.splice(rmvIndex, 1);
 
@@ -307,9 +281,9 @@ router.get('/github/:username', async (req, res) => {
     const options = {
       uri: `https://api.github.com/users/${
         req.params.username
-      }/repos?per_page=5&sort=created:asc&client_id=${config.get(
-        'githubClientId'
-      )}&client_secret=${config.get('githubSecret')}`,
+      }/repos?per_page=5&sort=created:asc&client_id=${config.get('githubClientId')}&client_secret=${config.get(
+        'githubSecret'
+      )}`,
       method: 'GET',
       headers: { 'user-agent': 'node-js' },
     };

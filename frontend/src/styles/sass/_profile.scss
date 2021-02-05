@@ -1,7 +1,11 @@
 .profile-container {
-  width: 55%;
+  width: 65%;
   padding: 55px 25px 55px 25px;
   margin: auto;
+
+  @media screen and (max-width: $lg-size) {
+    width: 75%;
+  }
 
   @media screen and (max-width: $xs-size) {
     width: 95%;
@@ -10,12 +14,21 @@
   & .profile-section {
     padding: 25px;
     background: #{$bg-secondary};
-    border-radius: 25px;
+    border-radius: 10px;
     margin-bottom: 25px;
 
     & .MuiAvatar-root {
       width: 250px;
       height: 250px;
+    }
+
+    & .exp-container {
+      padding: 8px;
+      margin-top: 15px;
+
+      & .body-content {
+        margin-top: 15px;
+      }
     }
   }
 }

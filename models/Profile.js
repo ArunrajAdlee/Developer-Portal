@@ -44,6 +44,7 @@ const ProfileSchema = new mongoose.Schema({
       },
       location: {
         type: String,
+        required: true,
       },
       startDate: {
         type: String,
