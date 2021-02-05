@@ -46,3 +46,11 @@ export async function getProfileInfoByUserId({ userID }) {
     return { error: e.response };
   }
 }
+
+export async function deleteProfileExperienceByID(experience_id) {
+  try {
+    return await server.delete(`/api/profile/experience/${experience_id}`);
+  } catch (e) {
+    return { error: e.response };
+  }
+}

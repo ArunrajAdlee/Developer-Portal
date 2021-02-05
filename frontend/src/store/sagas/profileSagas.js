@@ -1,7 +1,13 @@
 import { call, put, takeLatest } from 'redux-saga/effects';
-import { getProfileSuccess, getProfileFailure, showAlert } from '../actions';
+import {
+  getProfileSuccess,
+  getProfileFailure,
+  showAlert,
+  deleteProfileExperienceSuccess,
+  deleteProfileExperienceFailure,
+} from '../actions';
 import { profileConstants } from '../constants';
-import { getMyProfileInfo, getProfileInfoByUserId } from '../../api';
+import { getMyProfileInfo, getProfileInfoByUserId, deleteProfileExperienceByID } from '../../api';
 
 export function* getProfileSaga(params) {
   try {
@@ -25,6 +31,22 @@ export function* getProfileSaga(params) {
   }
 }
 
+export function* delteProfileExperience(params) {
+  try {
+    const { data, error } = yield call(deleteProfileExperienceByID, params.payload);
+
+    if (error) {
+      yield put(deleteProfileExperienceFailure());
+      return;
+    }
+    yield put(deleteProfileExperienceSuccess(data));
+  } catch (e) {
+    yield put(showAlert({ msg: 'Server Error!', type: 'error' }));
+    yield put(deleteProfileExperienceFailure());
+  }
+}
+
 export function* watchProfileAuth() {
   yield takeLatest(profileConstants.GET_PROFILE_START, getProfileSaga);
+  yield takeLatest(profileConstants.DELETE_PROFILE_EXPERIENCE_START, delteProfileExperience);
 }

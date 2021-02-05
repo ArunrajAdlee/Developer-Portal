@@ -197,7 +197,7 @@ router.put(
 
 router.delete('/experience/:experience_id', auth, async (req, res) => {
   try {
-    const profile = await Profile.findOne({ user: req.user.id });
+    const profile = await Profile.findOne({ user: req.user.id }).populate('user', ['name', 'avatar']);
 
     const rmvIndex = profile.experience.map((item) => item.id).indexOf(req.params.experience_id);
 

@@ -22,6 +22,16 @@ export default handleActions(
       profile: null,
       profileApiStatus: profileConstants.GET_PROFILE_FAILURE,
     }),
+    DELETE_PROFILE_EXPERIENCE_START: (state) => ({
+      ...state,
+    }),
+    DELETE_PROFILE_EXPERIENCE_SUCCESS: (state, { payload }) => ({
+      ...state,
+      profile: payload,
+    }),
+    DELETE_PROFILE_EXPERIENCE_FAILURE: (state) => ({
+      ...state,
+    }),
   },
   initialStates
 );

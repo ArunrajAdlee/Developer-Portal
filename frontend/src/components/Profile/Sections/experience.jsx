@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import { Avatar, Grid, CircularProgress, Backdrop, Typography, Paper } from '@material-ui/core';
+import { Grid, Typography, Button, Icon, IconButton } from '@material-ui/core';
 import { useDispatch, useSelector } from 'react-redux';
-import { Redirect, useParams } from 'react-router-dom';
+import HighlightOffIcon from '@material-ui/icons/HighlightOff';
+import { deleteProfileExperienceStart } from '../../../store/actions/index';
 
 const Experience = () => {
   const dispatch = useDispatch();
@@ -13,10 +14,15 @@ const Experience = () => {
       {profile.profile.experience.map((exp) => (
         <div variant="square" className="exp-container">
           <Grid container>
-            <Grid item xs={12}>
+            <Grid item xs={10}>
               <Typography variant="h4">
                 {exp.position} @ {exp.company}
               </Typography>
+            </Grid>
+            <Grid item xs={2}>
+              <IconButton onClick={() => dispatch(deleteProfileExperienceStart(exp._id))} color="inherit" edge="start">
+                <HighlightOffIcon />
+              </IconButton>
             </Grid>
             <Grid item xs={12}>
               <Typography variant="caption">
