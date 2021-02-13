@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { profileConstants } from '../../store/constants/index';
 import { getProfileStart } from '../../store/actions/index';
 import { Redirect, useParams } from 'react-router-dom';
-import Experience from './Sections/experience';
+import Experience from './Sections/Experience/experience';
 
 const Profile = () => {
   const dispatch = useDispatch();
@@ -36,7 +36,7 @@ const Profile = () => {
         </Grid>
         <Grid className="profile-section" container alignItems="center">
           <Grid item xs={12}>
-            <Experience />
+            <Experience currentUserProfile={currentUserProfile} />
           </Grid>
         </Grid>
         <Grid className="profile-section" container alignItems="center">
