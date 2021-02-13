@@ -178,7 +178,7 @@ router.put(
         isCurrent,
         description,
       };
-      const profile = await Profile.findOne({ user: req.user.id });
+      const profile = await Profile.findOne({ user: req.user.id }).populate('user', ['name', 'avatar']);
       profile.experience.unshift(expObj);
 
       await profile.save();
