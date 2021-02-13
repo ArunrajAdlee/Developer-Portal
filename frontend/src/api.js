@@ -54,3 +54,13 @@ export async function deleteProfileExperienceByID(experience_id) {
     return { error: e.response };
   }
 }
+
+export async function addProfileExperience(experience) {
+  try {
+    return await server.put(`/api/profile/experience/`, {
+      ...experience,
+    });
+  } catch (e) {
+    return { error: e.response };
+  }
+}

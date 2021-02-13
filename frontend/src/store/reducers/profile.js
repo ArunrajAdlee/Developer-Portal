@@ -32,6 +32,16 @@ export default handleActions(
     DELETE_PROFILE_EXPERIENCE_FAILURE: (state) => ({
       ...state,
     }),
+    ADD_PROFILE_EXPERIENCE_START: (state) => ({
+      ...state,
+    }),
+    ADD_PROFILE_EXPERIENCE_SUCCESS: (state, { payload }) => ({
+      ...state,
+      profile: payload,
+    }),
+    ADD_PROFILE_EXPERIENCE_FAILURE: (state) => ({
+      ...state,
+    }),
   },
   initialStates
 );

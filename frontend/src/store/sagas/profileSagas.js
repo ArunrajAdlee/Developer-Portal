@@ -5,9 +5,11 @@ import {
   showAlert,
   deleteProfileExperienceSuccess,
   deleteProfileExperienceFailure,
+  addProfileExperienceSuccess,
+  addProfileExperienceFailure,
 } from '../actions';
 import { profileConstants } from '../constants';
-import { getMyProfileInfo, getProfileInfoByUserId, deleteProfileExperienceByID } from '../../api';
+import { getMyProfileInfo, getProfileInfoByUserId, deleteProfileExperienceByID, addProfileExperience } from '../../api';
 
 export function* getProfileSaga(params) {
   try {
@@ -46,7 +48,23 @@ export function* delteProfileExperience(params) {
   }
 }
 
+export function* addProfileExperienceSaga(params) {
+  try {
+    const { data, error } = yield call(addProfileExperience, params.payload);
+
+    if (error) {
+      yield put(addProfileExperienceFailure());
+      return;
+    }
+    yield put(addProfileExperienceSuccess(data));
+  } catch (e) {
+    yield put(showAlert({ msg: 'Server Error!', type: 'error' }));
+    yield put(addProfileExperienceFailure());
+  }
+}
+
 export function* watchProfileAuth() {
   yield takeLatest(profileConstants.GET_PROFILE_START, getProfileSaga);
   yield takeLatest(profileConstants.DELETE_PROFILE_EXPERIENCE_START, delteProfileExperience);
+  yield takeLatest(profileConstants.ADD_PROFILE_EXPERIENCE_START, addProfileExperienceSaga);
 }

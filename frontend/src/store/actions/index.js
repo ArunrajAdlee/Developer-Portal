@@ -35,6 +35,10 @@ export const getProfileFailure = createAction(profileConstants.GET_PROFILE_FAILU
 export const deleteProfileExperienceStart = createAction(profileConstants.DELETE_PROFILE_EXPERIENCE_START);
 export const deleteProfileExperienceSuccess = createAction(profileConstants.DELETE_PROFILE_EXPERIENCE_SUCCESS);
 export const deleteProfileExperienceFailure = createAction(profileConstants.DELETE_PROFILE_EXPERIENCE_FAILURE);
+
+export const addProfileExperienceStart = createAction(profileConstants.ADD_PROFILE_EXPERIENCE_START);
+export const addProfileExperienceSuccess = createAction(profileConstants.ADD_PROFILE_EXPERIENCE_SUCCESS);
+export const addProfileExperienceFailure = createAction(profileConstants.ADD_PROFILE_EXPERIENCE_FAILURE);
 //--------------------------------
 
 //--------GLOBAL ALERT ACTIONS----------

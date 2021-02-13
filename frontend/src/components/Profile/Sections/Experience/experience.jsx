@@ -32,7 +32,7 @@ const Experience = (props) => {
         )}
       </Grid>
       {profile.profile.experience.map((exp) => (
-        <div variant="square" className="exp-container">
+        <div key={exp._id} variant="square" className="exp-container">
           <Grid container>
             <Grid item xs={9}>
               <Typography variant="h4">
